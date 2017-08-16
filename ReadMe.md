@@ -13,4 +13,7 @@ Git helpers for bash. Shows the current branch in PS1 prompt with the clean/dirt
  - Ctrl-G + p: git push origin ${CURRENT_BRANCH} 
  - Ctrl-G + c: cleans command line and types there 'git commit -m \"' 
 
+## tmux
+
+Current tmux config for working with bastion host. Connects to bastion, opens all windows and attaches each to running screen session at bastion host with just one keypress - Ctrl-B + O 
 
