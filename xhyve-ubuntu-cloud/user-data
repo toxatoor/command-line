@@ -1,0 +1,35 @@
+#cloud-config
+
+datasource_list: [ NoCloud ] 
+
+hostname: ubuntu
+
+write_files:
+-   content: |
+      [Service]
+      ExecStart=
+      ExecStart=-/sbin/agetty -a root --keep-baud 115200,38400,9600 %I $TERM
+    owner: root:root
+    path: /etc/systemd/system/serial-getty@ttyS0.service.d/autologin.conf
+    permissions: '0755'
+
+chpasswd:
+  expire: false
+  list: 
+    - root:root
+
+packages:
+  - ca-certificates
+  - openssl
+  - python
+  - curl
+  - screen
+  - vim
+  - apt-transport-https
+  - software-properties-common
+  - git
+  - make
+
+runcmd: 
+  - systemctl daemon-reload 
+  - systemctl restart serial-getty@ttyS0 
